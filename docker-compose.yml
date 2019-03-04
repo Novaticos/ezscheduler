@@ -1,21 +1,21 @@
 version: '3.5'
 services:
-#  redis:
-#    container_name: ezscheduler-redis
-#    image: redis
-#    volumes:
-#      - ./tmp/redis:/data
-#    ports:
-#      - 6379:6379
+  redis:
+   container_name: ezscheduler-redis
+   image: redis
+   volumes:
+     - ./tmp/redis:/data
+   ports:
+     - 6379:6379
 
   postgres:
     container_name: ezscheduler-postgres
     image: postgres
-    volumes:
-      - ./tmp/postgres:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ezscheduler
       POSTGRES_PASSWORD: ezscheduler
+    volumes:
+      - ./tmp/postgres:/var/lib/postgresql/data
 
   backend:
     container_name: ezscheduler-backend
@@ -27,7 +27,7 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
-#      - redis
+      - redis
 #  frontend:
 #    container_name: ezscheduler-frontend
 #    image: node:11.10.1
@@ -35,3 +35,12 @@ services:
 #    volumes:
 #      - ./app/javascrips/components:/ezscheduler/app/javascrips/components
 #    working_dir: /ezscheduler/app/javascrips/components
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports: 
+      - 80:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@test.com
+      PGADMIN_DEFAULT_PASSWORD: test

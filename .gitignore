@@ -23,5 +23,14 @@
 /config/master.key
 
 .idea/
-/node_modules
 /.history
+
+#React ignore
+/app/assets/javascrips/ezscheduler/node_modules
+/app/assets/javascrips/ezscheduler/.module-cache
+.DS_STORE
+*~
+/app/assets/javascrips/ezscheduler/*.log*
+*.sublime-project
+*.sublime-workspace
+.vscode

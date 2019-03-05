@@ -28,19 +28,24 @@ services:
     depends_on:
       - postgres
       - redis
-#  frontend:
-#    container_name: ezscheduler-frontend
-#    image: node:11.10.1
-#    command: npm start
-#    volumes:
-#      - ./app/javascrips/components:/ezscheduler/app/javascrips/components
-#    working_dir: /ezscheduler/app/javascrips/components
+
+  frontend:
+    container_name: ezscheduler-frontend
+    image: node:11.10.1
+    working_dir: /var/www/ezscheduler/
+    command: mkdir -p ./app/assets/javascrips/
+    working_dir: /var/www/ezscheduler/app/assets/javascrips/ezscheduler/
+    volumes:
+      - ./app/assets/javascrips/ezscheduler:/var/www/ezscheduler/app/assets/javascrips/ezscheduler
+    ports:
+      - "80:80"
+    command: bash -c "yarn && yarn start"
 
   pgadmin:
     image: dpage/pgadmin4
     restart: always
     ports: 
-      - 80:80
+      - 8080:8080
     environment:
       PGADMIN_DEFAULT_EMAIL: test@test.com
       PGADMIN_DEFAULT_PASSWORD: test

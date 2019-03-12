@@ -9,4 +9,4 @@
 6. docker-compose run frontend npx create-react-app /var/www/ezscheduler/app/assets/javascrips/ezscheduler
 7. docker-compose run backend bundle install
 8. Edit credentials.yml.enc `docker-compose run --rm -e EDITOR=nano backend rails credentials:edit`
-
+9. To check the ENV var substitutions from the .env file `docker-compose config`

@@ -12,8 +12,8 @@ services:
     container_name: ezscheduler-postgres
     image: postgres
     environment:
-      POSTGRES_USER: ezscheduler
-      POSTGRES_PASSWORD: ezscheduler
+      POSTGRES_USER: ${PGUSER}
+      POSTGRES_PASSWORD: ${PGPASSWORD}
     volumes:
       - ./tmp/postgres:/var/lib/postgresql/data
 
@@ -47,5 +47,5 @@ services:
     ports: 
       - 8080:8080
     environment:
-      PGADMIN_DEFAULT_EMAIL: test@test.com
-      PGADMIN_DEFAULT_PASSWORD: test
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}

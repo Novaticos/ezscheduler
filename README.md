@@ -10,3 +10,4 @@
 7. docker-compose run backend bundle install
 8. Edit credentials.yml.enc `docker-compose run --rm -e EDITOR=nano backend rails credentials:edit`
 9. To check the ENV var substitutions from the .env file `docker-compose config`
+10. Add react dependency with yarn: `docker-compose run frontend yarn add react-router`

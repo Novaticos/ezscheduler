@@ -33,5 +33,13 @@ module Ezscheduler
     config.api_only = true
     config.cache_store = :redis_cache_store, { url: "redis://redis:6379/0" }
     config.action_controller.perform_caching = true
+
+    # Avoid CORS erros from React HTTP calls
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
   end
 end
